@@ -1,0 +1,247 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    color: #fff;
+}
+a, a:hover, a:visited, a:active { 
+    color: #fff;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/**********/
+/* Layout */
+/**********/
+aside, footer, header, nav, section, article {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    overflow: hidden;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: auto 100px;
+    grid-template-areas:
+       "left main"
+       "bottom bottom";
+    height: 100vh;
+}
+aside {
+    background-color: #000;
+    grid-area: left;
+}
+header {
+    background: #111;
+    position: fixed;
+    width: calc(100vw - 250px);
+    left: 250px;
+}
+
+main {
+    background: #111;
+    grid-area: main;
+    min-height: calc(350px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    z-index: 3;
+}
+
+nav {
+    margin-top: 100px;
+}
+
+footer {
+    background: #222;
+    grid-area: bottom;
+}
+
+aside .selected {
+    border-style: solid;
+    border-left-color: green;
+    border-top-color: black;
+    border-right-color: black;
+    border-bottom-color: black;
+
+}
+
+main .selected {
+    border-style: solid;
+    border-top-color: black;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: green;
+}
+
+.player button {
+    background-color: black;
+    display: flex;
+    flex-direction: right;
+    width: 5%;
+}
+
+
+/***************************/
+/* Accessories & Florishes */
+/***************************/
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+    min-height: 30px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.3);
+}
+
+/***************************/
+/* Part A: Left Navigation */
+/***************************/
+
+/* Your Code Here */
+/* Should space out sidebar */ 
+aside a {
+    justify-content: space; 
+    padding: 4%;
+}
+
+/********************************/
+/* Part B: Header & Nav Styling */
+/********************************/
+
+/* Space out the upgrade and profile */
+main header {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+header a {
+    padding-inline: 8px;
+    justify-content: end;
+    margin: 10px;
+    border-radius: 35%;
+    /* How to make the borders smaller */
+}
+/* Space out nav profile bar */
+nav { 
+        display: flex; 
+        flex-direction: row;
+} 
+
+nav a {
+    padding: 10px; 
+}
+
+#upgrade {
+    border-style: solid;
+    border-color: #fff;
+    border-radius: 10%;
+    padding: 9px;
+    padding-top: 5%;
+  }
+
+  #profile { 
+    border-style: solid;
+    border-color: black;
+    background-color: #383833;
+    border-radius: 10%;
+    padding: 9px;
+    padding-top: 5%;
+}
+
+/*************************/
+/* Part C: Artists Panel */
+/*************************/
+
+
+img { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 100%;
+}
+
+
+.artist-card {
+    width: 14%;
+    background-color: #383833;
+    margin: 15px;
+    display: block;
+    border-radius: 9%;
+}
+
+.card-footer {
+    font-display: flex;
+    flex-wrap: wrap;
+}
+
+div { 
+    
+    display: flex;
+    flex-direction: column;
+    size: 10px;
+}
+
+.artist-card h2 {
+    font-size: smaller;
+}
+
+
+.card-footer { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer p { 
+    padding: 10%
+    justify-content: left;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  footer img {
+      width: 15%;
+      height: 20%;
+      border-radius: 0%;
+  }
+
+
+
+
+
+/**************************/
+/* Part D: Responsive UIs */
+/**************************/
+
+
+@media (max-width: 1024px) {
+    .artist-card { 
+        width: 20%;
+    }
+}
+ 
+    @media (max-width: 600px) {
+        .artist-card { 
+            width: 30%;
+    }
+    aside { 
+        display: none;
+    }
+       }
+/* Your Code Here */
+
+
