@@ -1,12 +1,12 @@
-let fontSize = 2.4;
+let fontSize = 2;
 
 const makeBigger = () => {
-   fontSize += 0.2;
+   fontSize += 0.4;
    changeFont (); 
 };
 
 const makeSmaller = () => {
-   fontSize -= 0.2; 
+   fontSize -= 0.4; 
    changeFont ();
 };
 
