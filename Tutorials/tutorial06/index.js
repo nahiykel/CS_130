@@ -119,3 +119,25 @@ const playSong = (ev) => {
     audio.load();
     audio.play();
 }
+// index
+// tracks[0]
+// tracks[2].name
+// `<p>${tracks[2].name}</p>`
+
+// Two loop approaches: 
+
+// for... of 
+// for (const track of tracks) {
+// //   console.log(track);
+//   let template = `
+//     <div data-song="${tack.preview_url}" onclick="playSong(event);"> 
+//       <img src="${track.image_url}" />
+//        <h2>${track.name} </h2>
+//     </div>`;
+//     document.querySelector('main').innerHTML += template;
+// // }
+
+// const playSong = ev => {
+//   const songURL = ev.currentTarget.getAttribute("data-song"); 
+// }
+
