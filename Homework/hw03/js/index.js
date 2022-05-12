@@ -18,6 +18,8 @@
  * 
  */
 
+let currentIndex = 0; 
+
 const images = [
     'images/field1.jpg',
     'images/purple.jpg',
@@ -42,7 +44,6 @@ const initScreen = () => {
     });
 };
 
-initScreen();
 
 const handleThumbnailClick = ev => {
     console.log(ev); 
@@ -52,4 +53,39 @@ const handleThumbnailClick = ev => {
     const bgImage = elem.style.backgroundImage; 
     document.querySelector('.featured_image').style.backgroundImage = bgImage;
 }
-// bitch
+
+const next = () => {
+    if (currentIndex < 7 ) {
+        currentIndex +=1;
+    } else {
+        currentIndex = 0; 
+    } 
+    console.log('Show next image', currentIndex);
+    console.log(images[currentIndex]);
+    document.querySelector('.featured_image').style.backgroundImage  = `
+        url('${images[currentIndex]}')
+    `;
+};
+
+const previous = () => {
+    if (currentIndex > 0) {
+        currentIndex -=1; 
+    } else {
+        currentIndex = 7; 
+    }
+    console.log('Show previous image', currentIndex);
+    console.log(images[currentIndex]); 
+    document.querySelector('.featured_image').style.backgroundImage = ` 
+        url('${images[currentIndex]}')
+    `;
+}; 
+
+initScreen();
+
+
+// Goal
+// 1. Create fncion handles previous 
+// 2. Create function handles next 
+
+
+
