@@ -52,6 +52,9 @@ const handleThumbnailClick = ev => {
     console.log(elem); 
     const bgImage = elem.style.backgroundImage; 
     document.querySelector('.featured_image').style.backgroundImage = bgImage;
+
+    // Update Current index 
+    currentIndex = Number(elem.getAttribute('data-index')); 
 }
 
 const next = () => {
