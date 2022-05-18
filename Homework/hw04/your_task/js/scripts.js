@@ -16,24 +16,42 @@ const search = (ev) => {
     }
 }
 
-const getTracks = (term) => {
+const getTracks = (term) => { 
+    document.querySelector('#tracks').innerHTML = ""; 
         console.log(`
             get tracks from spotify based on the search term
             "${term}" and load them into the #tracks section 
             of the DOM...`);
-    const elem = document.querySelector("#tracks"); 
-        elem.innerHTML = ""; 
-        fetch(baseURL + "?type=track&q=" + term)
-            .then((data) => data.json())
-            .then((data) => {
-                console.log("tracks: ", data); 
-                const firstFive = data.slice(0,5); 
-                for(const artistData of firstFive) { 
-                    elem.innerHTML += getTrackHTML(artistData); 
-                }
-            }); 
-    
-};
+            fetch("https://www.apitutor.org/spotify/simple/v1/search?type=track&limit=5&q=" + term )
+                .then(response => response.json())
+                .then(tracks=> {
+                    console.log("tracks");
+                    if (tracks.length === 0) {
+                        document.querySelector('#tracks').innerHTML += `
+                            <p> No tracks found for "${term}" </p>
+                            `; 
+                    }
+                    for (const track of tracks) {
+                        // // document.querySelector('#tracks').innerHTML += `
+                        // //     <p>${track.name}</p>
+                        //     `; 
+
+                        document.querySelector('#tracks').innerHTML += `
+                        <button class="track-item preview" data-preview-track="${track.preview_url}"https://p.scdn.co/mp3-preview/879c7106422b0b53852209da6a63210be7e09b01?cid=9697a3a271d24deea38f8b7fbfa0e13c">
+                        <img src="${track.album.image_url}">
+                        <i class="fas play-track fa-play" aria-hidden="true"></i>
+                        <div class="label">
+                            <h2>${track.name}</h2>
+                            <p>
+                                ${track.artist.name}
+                            </p>
+                        </div>
+                    </button>
+
+                        
+                    `} 
+                }); 
+}; 
 
 const getTrackHTML = (data) => {
     return `<button class ="track-item preview" data-preview-tracks=${data.preview_url} onclick="handleTrackClick(event);">
@@ -56,6 +74,11 @@ const getAlbums = (term) => {
         fetch(baseURL + "?type=album&q=" + term)
             .then((data) => data.json())
             .then((data) => {
+                if (data.length === 0) {
+                    document.querySelector('#albums').innerHTML += `
+                        <p> No albums found for "${term}" </p>
+                        `; 
+                }
                 for(const albumData of data) {
                     console.log(albumData);
                     elem.innerHTML += getAlbumHTML(albumData); 
@@ -81,21 +104,27 @@ const getArtist = (term) => {
 
     const elem = document.querySelector("#artist"); 
     elem.innerHTML = ""; 
-    fetch(baseURL + "?type=artists&q=" + term )
-        .then(data => data.json())
+    fetch("https://www.apitutor.org/spotify/simple/v1/search?type=artist&q=" + term)
+        .then((data) => data.json())
         .then((data) => { 
+            if (data.length === 0) {
+                document.querySelector('#artist').innerHTML += `
+                    <p> No artist found for "${term}" </p>
+                    `; 
+            }
             console.log(data); 
             if(data.length > 0) { 
                 const firstArtist = data[0];
-                elem.innerHTML += getArtistsHTML(firstArtist); 
+                elem.innerHTML += getArtistHTML(firstArtist); 
             }
     }); 
 };
+
 const getArtistHTML = (data) => { 
     return `<section class="artist-card" id=${data.id}>
     <div>
         <img src="${data.image_url}">
-        <h2>BTS</h2>
+        <h2>${data.name}</h2>
         <div class="footer">
             <a href="${data.spotify_url}"  target="_blank">
                 view on spotify
@@ -117,4 +146,4 @@ document.querySelector('#search').onkeyup = (ev) => {
         ev.preventDefault();
         search();
     }
-};
+}; 
