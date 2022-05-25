@@ -134,22 +134,25 @@ const getArtistHTML = (data) => {
 </section>`
 }
 
-const getCurrentTrack
-<div id="current-track" class="track-item" data-preview-track="https://p.scdn.co/mp3-preview/879c7106422b0b53852209da6a63210be7e09b01?cid=9697a3a271d24deea38f8b7fbfa0e13c">
-<img src="https://i.scdn.co/image/1aacaefb0ef07755e5a155d96ee7f1073063e428">
-<i class="fas play-track fa-pause" aria-hidden="true"></i>
-<div class="label">
-    <h2>Black Swan</h2>
-    <p>
-        BTS
-    </p>
-</div>
-</div>
+// const getCurrentTrack
+// <div id="current-track" class="track-item" data-preview-track="https://p.scdn.co/mp3-preview/879c7106422b0b53852209da6a63210be7e09b01?cid=9697a3a271d24deea38f8b7fbfa0e13c">
+// <img src="https://i.scdn.co/image/1aacaefb0ef07755e5a155d96ee7f1073063e428">
+// <i class="fas play-track fa-pause" aria-hidden="true"></i>
+// <div class="label">
+//     <h2>Black Swan</h2>
+//     <p>
+//         BTS
+//     </p>
+// </div>
+// </div>
 
 const handleTrackClick = (ev) => {
     const previewUrl = ev.currentTarget.getAttribute('data-preview-track');
     console.log(previewUrl);
-}
+    document.querySelector("#track").src = previewUrl; 
+    audioPlayer.setAudioFile(preivewUrl); 
+    audioPlayer.play(); 
+}; 
 
 document.querySelector('#search').onkeyup = (ev) => {
     // Number 13 is the "Enter" key on the keyboard
