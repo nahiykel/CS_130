@@ -8,19 +8,22 @@
 */
 
 
-.style1 .image { 
+ /* .style1 .image { 
 		background-image: url("https://static01.nyt.com/images/2017/12/04/arts/04onceisland1/04onceisland1-facebookJumbo.jpg") !important;
 		background-size: cover !important;
-}
+}  */
 
-/* .agmimage, .armimage, .redimage {
+
+.agmimage, .armimage, .redimage {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-} */
+} 
+
 .inner .allimages { 
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: space-between; 
 }
 html, body, div, span, applet, object,
@@ -73,7 +76,6 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: transparent;
-	background-blend-mode: ;
 }
 
 mark {
@@ -93,10 +95,10 @@ input, select, textarea {
 	appearance: none;
 }
 
-.style1 .image { 
+/* .style1 .image { 
 	background-image: url("https://static01.nyt.com/images/2017/12/04/arts/04onceisland1/04onceisland1-facebookJumbo.jpg") !important;
 	background-size: cover !important;
-}
+} */
 
 /* Basic */
 
@@ -3363,3 +3365,28 @@ input, select, textarea {
 			}
 
 		}
+
+.productionphotos { 
+	display: flex;
+	flex-direction: column;
+	flex-wrap: row;
+	justify-content: space-between; 
+	padding-top: 5%;
+}
+
+.inner figcaption  p { 
+	display: flex;
+	flex-direction: column;
+	padding: 0%;
+}
+
+.inner figcaption h6 {
+	display: flex;
+	flex-direction: column;
+	padding-top: 5%;
+}
+
+.inner img { 
+	display: flex; 
+	flex-direction: row;
+}

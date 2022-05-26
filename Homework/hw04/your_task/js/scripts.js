@@ -26,6 +26,7 @@ const getTracks = (term) => {
                 .then(response => response.json())
                 .then(tracks=> {
                     console.log("tracks");
+                    
                     if (tracks.length === 0) {
                         document.querySelector('#tracks').innerHTML += `
                             <p> No tracks found for "${term}" </p>
@@ -38,7 +39,7 @@ const getTracks = (term) => {
 
                         document.querySelector('#tracks').innerHTML += `
                         <button class="track-item preview" data-preview-track="${track.preview_url}"https://p.scdn.co/mp3-preview/879c7106422b0b53852209da6a63210be7e09b01?cid=9697a3a271d24deea38f8b7fbfa0e13c">
-                        <img src="${track.album.image_url}">
+                        <img src="${track.album.image_url}" alt="${track.name}>
                         <i class="fas play-track fa-play" aria-hidden="true"></i>
                         <div class="label">
                             <h2>${track.name}</h2>
@@ -55,7 +56,7 @@ const getTracks = (term) => {
 
 const getTrackHTML = (data) => {
     return `<button class ="track-item preview" data-preview-tracks=${data.preview_url} onclick="handleTrackClick(event);">
-    <img src=${data.album.image_url}>
+    <img src=${data.album.image_url} alt="${data.name}>
     <i class="fas play-track fa-play" araia-hidden="true"></i>
     <div class="label">
         <h2>${data.name}</h2>
@@ -74,6 +75,7 @@ const getAlbums = (term) => {
         fetch(baseURL + "?type=album&q=" + term)
             .then((data) => data.json())
             .then((data) => {
+                console.log(data); 
                 if (data.length === 0) {
                     document.querySelector('#albums').innerHTML += `
                         <p> No albums found for "${term}" </p>
@@ -89,7 +91,7 @@ const getAlbums = (term) => {
 const getAlbumHTML = data => { 
 return `<section class ="album-card" id=${data.id}>
 <div>
-    <img src=${data.image_url}>
+    <img src=${data.image_url} alt="${data.name}>
     <h2>${data.name}</h2>
     <div class="footer">
         <a href=${data.spotify_url} target="_blank">
@@ -115,7 +117,7 @@ const getArtist = (term) => {
             console.log(data); 
             if(data.length > 0) { 
                 const firstArtist = data[0];
-                elem.innerHTML += getArtistHTML(firstArtist); 
+                elem.innerHTML += getArtistHTML(firstArtist);
             }
     }); 
 };
@@ -123,7 +125,7 @@ const getArtist = (term) => {
 const getArtistHTML = (data) => { 
     return `<section class="artist-card" id=${data.id}>
     <div>
-        <img src="${data.image_url}">
+        <img src="${data.image_url}" alt="picture of ${data.name}">
         <h2>${data.name}</h2>
         <div class="footer">
             <a href="${data.spotify_url}"  target="_blank">
@@ -131,7 +133,7 @@ const getArtistHTML = (data) => {
             </a>
         </div>
     </div>
-</section>`
+</section>`; 
 }
 
 // const getCurrentTrack
@@ -149,7 +151,7 @@ const getArtistHTML = (data) => {
 const handleTrackClick = (ev) => {
     const previewUrl = ev.currentTarget.getAttribute('data-preview-track');
     console.log(previewUrl);
-    document.querySelector("#track").src = previewUrl; 
+    document.querySelector("footer .track-item").innerHTML = ev.currentTarget.innerHTML; 
     audioPlayer.setAudioFile(preivewUrl); 
     audioPlayer.play(); 
 }; 
