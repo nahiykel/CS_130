@@ -14,7 +14,7 @@
 }  */
 
 
-.agmimage, .armimage, .redimage {
+/* .agmimage, .armimage, .redimage {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -25,7 +25,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-between; 
-}
+} */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
