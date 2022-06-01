@@ -26,11 +26,35 @@
 	flex-wrap: wrap;
 	justify-content: space-between; 
 } */
-
+/* 
 .titles {
 	display: flex;
 	flex-direction: row;
 	!important; 
+	} */
+
+	#main.execmembers .inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		justify-content: space-around;
+	}
+
+	#main.execmembers .inner .titles { 
+		width: 500px;
+	}
+
+	#main.execmembers .inner .titles img {
+		width: 100%;
+	}
+
+	#main .productionphotos img {
+		width: 100%;
+	}
+
+	#main .productionphotos figure {
+		width: 500px;
+		height: 200px;
 	}
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
