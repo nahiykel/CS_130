@@ -26,6 +26,12 @@
 	flex-wrap: wrap;
 	justify-content: space-between; 
 } */
+
+.titles {
+	display: flex;
+	flex-direction: row;
+	!important; 
+	}
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -2739,7 +2745,7 @@ input, select, textarea {
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #f2849e;
+				background-color: #ae85ca;
 			}
 
 			.tiles article.style2 > .image:before {
